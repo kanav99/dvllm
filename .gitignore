@@ -1,0 +1,13 @@
+.venv
+__pycache__
+run
+runq
+*.bin
+*.bin.q
+server
+client
+.vscode/
+build/
+venv/
+*.log
+target/

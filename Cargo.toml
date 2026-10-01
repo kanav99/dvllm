@@ -1,0 +1,35 @@
+[package]
+name = "mcs-cpp"
+authors.workspace = true
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[workspace.package]
+description = "Matrix Commitment Schemes with C++ interop"
+authors = ["Anonymous"]
+version = "0.1.0"
+edition = "2021"
+license = "BSD-3-Clause"
+readme = "README.md"
+keywords = [""]
+categories = [""]
+
+
+[lib]
+name = "mcscpp"
+crate-type = ["staticlib"]
+path = "src/verification.rs"
+
+[dependencies]
+bincode = "1.3.3"
+ark-ff = "0.6.0"
+ark-ec = { version = "0.6.0", features = ["parallel"] }
+ark-std = { version = "0.6.0", features = ["parallel"] }
+# Real secp256k1 curve arithmetic, not ark_test_curves (which is
+# unoptimized and explicitly meant for testing only). "asm" only speeds up
+# x86_64 builds; "parallel" runs MSM's bucket accumulation across cores via
+# rayon, which is where most of the win is on this (ARM) machine.
+ark-secp256k1 = { version = "0.6.0", features = ["asm"] }
+ark-serialize = { version = "0.6.0", features = ["derive"] }
+once_cell = "1.19"
