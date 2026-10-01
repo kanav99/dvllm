@@ -1,8 +1,8 @@
-# delegated-llama (`dvllm`)
+# dvllm
 
 **Verifiable, delegated LLM inference in C++.**
 
-`delegated-llama` splits transformer inference between two parties:
+`dvllm` splits transformer inference between two parties:
 
 - A **server** (the *prover*) that holds the large fixed-point weights and performs
   all the expensive matrix multiplications — optionally on an NVIDIA GPU (CUDA).
@@ -92,7 +92,7 @@ Llama 3.2 covers the 1B / 3B variants (base and `-Instruct`). Gemma 3 covers the
 ## Directory layout
 
 ```
-delegated-llama/
+dvllm/
 ├── src/                 # C++/CUDA/Rust sources for the shipped binaries
 │   ├── llama2q.cpp      #   Llama 2  client (verifier)
 │   ├── llama3.2q.cpp    #   Llama 3.2 client (verifier)
@@ -207,8 +207,8 @@ huggingface-cli login
 ## Building
 
 ```bash
-git clone <this-repo-url> delegated-llama
-cd delegated-llama
+git clone <this-repo-url> dvllm
+cd dvllm
 
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j
